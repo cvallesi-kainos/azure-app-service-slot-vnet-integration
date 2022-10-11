@@ -15,6 +15,12 @@ resource "azurerm_linux_web_app" "web_app" {
   site_config {
     vnet_route_all_enabled = true
   }
+
+  lifecycle {
+    ignore_changes = [
+      virtual_network_subnet_id
+    ]
+  }
 }
 
 resource "azurerm_linux_web_app_slot" "slot_stage" {
@@ -23,6 +29,12 @@ resource "azurerm_linux_web_app_slot" "slot_stage" {
 
   site_config {
     vnet_route_all_enabled = true
+  }
+
+  lifecycle {
+    ignore_changes = [
+      virtual_network_subnet_id
+    ]
   }
 }
 
