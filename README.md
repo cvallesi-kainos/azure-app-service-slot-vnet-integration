@@ -18,6 +18,7 @@ To test:
 7. The "VNet Integration" for this slot will not be enabled despite the configuration saying so in `terraform\modules\app-service\main.tf` line 25.
 
 This issue will cause problems when you also use the `azurerm_web_app_active_slot` resource block to switch slots on deployments because the new slot will lack the necessary "Vnet Integration".  
-To test this, simply open the configuration file `terraform\modules\app-service\main.tf` and uncomment the resource block `azurerm_web_app_active_slot`. Deploy again to see that now, the "production slot" will not have VNet Integration as it was the "example slot" that has been promoted to production.
+To test this, simply open the configuration file `terraform\modules\app-service\main.tf` and uncomment the resource block `azurerm_web_app_active_slot`. Deploy again to see that now, the "production slot" will not have VNet Integration as it was the "example slot" that has been promoted to production.  
+Of critical importance is that from this moment on, no matter how many depoyments will be done, the VNet Integration will not be enabled because the "production" slot is deployed with no VNet Integration and any additional slot will not consider the attribute anyway. The only option will be to destroy the web service and recreate it.
 
 The only workaround I've found is to add the parameter `overwrite_network_config` set to `false`. That will always maintain the main network configuration used in the initial configuration specified in the `azurerm_linux_web_app` resource block.
