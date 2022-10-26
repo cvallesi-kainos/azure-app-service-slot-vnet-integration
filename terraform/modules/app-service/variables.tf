@@ -36,3 +36,8 @@ variable "app_plan_sku" {
   type        = string
   default     = "P1v2"
 }
+
+variable "app_plan_worker_count" {
+  type        = number
+  default     = 1
+}

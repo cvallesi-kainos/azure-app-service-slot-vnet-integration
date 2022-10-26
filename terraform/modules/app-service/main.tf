@@ -3,6 +3,7 @@ resource "azurerm_service_plan" "app_service" {
   resource_group_name = local.resource_group_name
   location            = var.location
   sku_name            = var.app_plan_sku
+  worker_count        = var.app_plan_worker_count
   os_type             = "Linux"
 }
 
