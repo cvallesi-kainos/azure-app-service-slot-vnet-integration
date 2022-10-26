@@ -1,2 +1,4 @@
 terraform/backend/
 .terraform*
+
+terraform/env/tf_plan
