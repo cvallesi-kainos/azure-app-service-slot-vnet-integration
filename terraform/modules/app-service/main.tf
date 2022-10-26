@@ -41,6 +41,7 @@ resource "azurerm_linux_web_app_slot" "slot_stage" {
 
 # resource "azurerm_web_app_active_slot" "active_slot" {
 #   slot_id = azurerm_linux_web_app_slot.slot_stage.id
+#   overwrite_network_config = false
 # }
 
 resource "azurerm_app_service_virtual_network_swift_connection" "swift_connection" {
